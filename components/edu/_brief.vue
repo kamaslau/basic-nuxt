@@ -56,6 +56,5 @@ export default {
 </script>
 
 <style scoped>
-  .edu-brief {margin-top:20px;}
-  p {margin:0;}
+
 </style>

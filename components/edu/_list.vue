@@ -1,5 +1,5 @@
 <template>
-  <ul :class="style_class" class="edu-list">
+  <ul :class="style_class">
     
     <li v-for="(item, index) in items" :key="index">
       <EduBrief :item="item" />
@@ -24,7 +24,7 @@ export default {
     // 样式类
     style_class: {
       type: String,
-      default: ''
+      default: 'common-list'
     },
     
     // 数据项
@@ -48,6 +48,7 @@ export default {
 
   created() {
     // console.clear()
+    // console.log('items: ', this.items)
   },
 
   methods: {
