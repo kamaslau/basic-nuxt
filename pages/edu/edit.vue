@@ -16,7 +16,7 @@ export default {
 
   head() {
     return {
-      title: '修改' + this.class_name_text
+      title: this.title
     }
   },
 
@@ -39,6 +39,8 @@ export default {
 
   data() {
     return {
+      title: '添加' + this.class_name_text,
+
       item: {}
     }
   }, // end data

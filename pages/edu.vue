@@ -10,8 +10,12 @@
         </ul>
       </nav>
     </div>
-    
-    <nuxt-child :class_name_text="class_name_text" :class_name="class_name" :id_name="id_name" />
+  
+    <nuxt-child
+        :class_name_text="class_name_text"
+        :class_name="class_name"
+        :id_name="id_name"
+    />
   </div>
 </template>
 

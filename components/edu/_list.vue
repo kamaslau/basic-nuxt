@@ -69,5 +69,5 @@ export default {
 </script>
 
 <style scoped>
-  .edu-list {margin-top:30px;}
+
 </style>
