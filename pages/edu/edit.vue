@@ -97,8 +97,8 @@ export default {
             alert('Edit OK')
 
             // 更新本地状态
-            item.time_edit = result.timestamp
-            this.$store.commit('mine/updateEdu', item)
+            // item.time_edit = result.timestamp
+            // this.$store.commit('mine/updateEdu', item)
             
             this.$router.back()
           } else {

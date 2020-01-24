@@ -15,7 +15,7 @@
 
 <script>
 /**
- * 组件 教育经历列表
+ * 组件 列表
  */
 export default {
   name: 'EduList',

@@ -19,78 +19,78 @@
 </template>
 
 <script>
-  export default {
-    name: 'EduIndex',
+export default {
+  name: 'EduIndex',
 
-    head() {
-      return {
-        title: this.title
-      }
+  head() {
+    return {
+      title: this.title
+    }
+  },
+
+  props: {
+    class_name_text: {
+      type: String,
+      default: process.env.site.name
     },
 
-    props: {
-      class_name_text: {
-        type: String,
-        default: process.env.site.name
-      },
-
-      class_name: {
-        type: String,
-        default: ''
-      },
-
-      id_name: {
-        type: String,
-        default: ''
-      }
-    }, // end props
-
-    data() {
-      return {
-        title: this.class_name_text,
-
-        user_id: '',
-        items: []
-      }
+    class_name: {
+      type: String,
+      default: ''
     },
 
-    created() {
-      // console.clear()
-      this.fetch_data()
-    },
+    id_name: {
+      type: String,
+      default: ''
+    }
+  }, // end props
 
-    methods: {
-      // 获取数据
-      fetch_data() {
-        const query_params = {
-          user_id: this.$route.query.user_id
-        }
-        const api_url = this.class_name + '/index'
-        const params = { ...query_params, ...this.$store.getters.common_params }
+  data() {
+    return {
+      title: this.class_name_text,
 
-        return this.$axios
-            .$post(api_url, params)
-            .then(result => {
-              // console.log(result)
+      user_id: '',
+      items: []
+    }
+  },
 
-              // 若请求成功，更新翻页参数
-              try {
-                if (result.status === 200) {
-                  this.user_id = query_params.user_id
-                  this.items = [ ...result.content ]
-                }
-              } catch (error) {
-                console.error(error)
-                result.status = 500
-                result.content.error.message = '服务器错误 ERROR_API'
+  created() {
+    // console.clear()
+    this.fetch_data()
+  },
+
+  methods: {
+    // 获取数据
+    fetch_data() {
+      const query_params = {
+        user_id: this.$route.query.user_id
+      }
+      const api_url = this.class_name + '/index'
+      const params = { ...query_params, ...this.$store.getters.common_params }
+
+      return this.$axios
+          .$post(api_url, params)
+          .then(result => {
+            // console.log(result)
+
+            // 若请求成功，更新翻页参数
+            try {
+              if (result.status === 200) {
+                this.user_id = query_params.user_id
+                this.items = [ ...result.content ]
               }
-            })
-            .catch(error => {
+            } catch (error) {
               console.error(error)
-            })
-      } // end methods.fetch_data
-    } // end methods
-  }
+              result.status = 500
+              result.content.error.message = '服务器错误 ERROR_API'
+            }
+          })
+          .catch(error => {
+            console.error(error)
+          })
+    } // end methods.fetch_data
+  } // end methods
+}
 </script>
 
 <style scoped>

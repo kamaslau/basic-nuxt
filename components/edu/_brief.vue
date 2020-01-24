@@ -15,7 +15,7 @@
 
 <script>
 /**
- * 组件 教育/培训简述
+ * 组件 简述
  */
 export default {
   name: 'EduBrief',
@@ -32,8 +32,6 @@ export default {
 
   data() {
     return {
-      class_name: 'edu',
-      id_name: 'edu_id'
     }
   },
 

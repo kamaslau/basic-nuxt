@@ -74,64 +74,58 @@
 </template>
 
 <script>
-  export default {
-    name: 'EduForm',
+/**
+ * 组件 表单
+ */
 
-    props: {
-      value: {
-        type: Object,
-        required: false,
-        default() {
-          return {}
-        }
-      },
+export default {
+  name: 'EduForm',
 
-      class_name: {
-        type: String,
-        default: ''
-      },
-
-      id_name: {
-        type: String,
-        default: ''
+  props: {
+    value: {
+      type: Object,
+      required: false,
+      default() {
+        return {}
       }
+    }
+  },
+
+  data() {
+    return {
+      form_message: '',
+
+      item: Object.keys(this.value).length > 0
+          ? { ...this.value }
+          : {
+            org_name: '',
+            year_start: '',
+            year_end: '',
+            degree: '',
+            major: '',
+            status: '10'
+          },
+
+      show_advanced: false
+    }
+  },
+
+  methods: {
+    // 切换全部字段的显示
+    toggle_advanced() {
+      this.show_advanced = !this.show_advanced
     },
 
-    data() {
-      return {
-        form_message: '',
+    // 提交表单
+    submit_form() {
+      // 重置错误提示
+      this.form_message = ''
 
-        item: Object.keys(this.value).length > 0
-            ? { ...this.value }
-            : {
-              org_name: '',
-              year_start: '',
-              year_end: '',
-              degree: '',
-              major: '',
-              status: '10'
-            },
-
-        show_advanced: false
-      }
-    },
-
-    methods: {
-      // 切换全部字段的显示
-      toggle_advanced() {
-        this.show_advanced = !this.show_advanced
-      },
-
-      // 提交表单
-      submit_form() {
-        // 重置错误提示
-        this.form_message = ''
-
-        console.log('item: ', this.item)
-        this.$emit('submit', this.item) // 触发父组件submit事件
-      } // end methods.submit_form
-    } // end methods
-  }
+      console.log('item: ', this.item)
+      this.$emit('submit', this.item) // 触发父组件submit事件
+    } // end methods.submit_form
+  } // end methods
+}
 </script>
 
 <style scoped>
